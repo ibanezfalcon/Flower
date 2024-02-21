@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hi Love</title>
+     
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+        <style>
+          body {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+        }
+
+         body::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+         background: url('images/sunflowers.gif') center center fixed;
+         background-size: cover;
+         opacity: 0.6; 
+        }
+
+       .container {
+        z-index: 1; 
+        }       
+
+        #success-message {
+            display: none;
+            text-align: center;
+        }
+
+        #flowers {
+            font-size: 2em;
+            color: #e44d26;
+        }
+        .heart-img {
+            width: 60px;
+            height: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out; 
+        }
+        .heart-img:hover {
+            transform: scale(1.1);
+        }
+        .transparent-input {
+        background: transparent;
+        border: 1px solid black;
+        color: white; 
+        }
+        
+      
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container text-center d-flex align-items-center justify-content-center" >
+            <div id="input-page">
+                <div class="row" style="position: absolute; margin: 30px; margin-left: 9%; max-width: 500px;">
+                    <div class="col-md-12" >
+                        <p id="typing-text"></p>
+                    </div>
+                </div>
+                <div class="row">
+                  
+                        <img src="images/dialog-box.png" height="180px" width="10px">
+                       
+                  
+                    <div class="col-lg-12" >
+                        <img src="images/girl.gif" >
+                    </div>
+                    <div class="col-lg-12">
+                        
+                        <input type="text" id="girlfriendName" class="form-control mb-3 transparent-input m-1" placeholder="Your Name" >
+                        <img src="images/heart.gif" alt="Heart" class="heart-img"  onclick="showLoveMessage()">
+                        <label>click the heart to proceed</label>
+                    </div>
+                </div>
+                
+            </div>
+    
+          
+        </div>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+
+<script>
+   
+    const sentences = [
+    "Hi Marielle, my name is Kaori, and Daniel wants me to tell you that you are beautiful. Please smile while reading this :)",
+    "Pinapasabi din po niya na 6th monthsary niyo po today, Happy Monthsary po sa inyo :)",
+    "Pakitype nalang po ng pangalan mo sa baba, then pasubmit po"
+];
+
+const typingSpeed = 50;
+let sentenceIndex = 0;
+let charIndex = 0;
+const typingElement = document.getElementById('typing-text');
+
+function typeNextCharacter() {
+    const currentSentence = sentences[sentenceIndex];
+    if (charIndex < currentSentence.length) {
+        typingElement.innerHTML += currentSentence.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeNextCharacter, typingSpeed);
+    } else if (sentenceIndex < sentences.length - 1) {
+        sentenceIndex++;
+        charIndex = 0;
+        typingElement.innerHTML = ""; 
+        setTimeout(function () {
+            typeNextCharacter();
+        }, typingSpeed);
+    }
+}
+
+function showLoveMessage(){
+    var name = document.getElementById('girlfriendName');
+    if (name.value.includes('marielle') || name.value.includes('gozo') || name.value.includes('manuel' || name.value.includes('Marielle') || name.value.includes('Manuel') || name.value.includes('Gozo'))
+    ) {
+       
+        alert('Love message will be shown!');
+        window.location.href = 'show.html';
+    }else{
+        alert('You are not my girlfriend!');
+    }
+}
+// Start typing when the page loads
+window.onload = typeNextCharacter;
+
+</script>
