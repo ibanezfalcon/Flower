@@ -124,17 +124,22 @@ function typeNextCharacter() {
     }
 }
 
-function showLoveMessage(){
+function showLoveMessage() {
     var name = document.getElementById('girlfriendName');
-    if (name.value.includes('marielle') || name.value.includes('gozo') || name.value.includes('manuel' || name.value.includes('Marielle') || name.value.includes('Manuel') || name.value.includes('Gozo'))
+    var lowercasedName = name.value.toLowerCase();
+
+    if (
+        lowercasedName.includes('marielle') || 
+        lowercasedName.includes('gozo') || 
+        lowercasedName.includes('manuel')
     ) {
-       
         alert('Love message will be shown!');
         window.location.href = 'show.html';
-    }else{
+    } else {
         alert('You are not my girlfriend!');
     }
 }
+
 // Start typing when the page loads
 window.onload = typeNextCharacter;
 
